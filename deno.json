@@ -1,0 +1,7 @@
+{
+  "tasks": {
+    "dev": "deno run --watch src/main.ts",
+    "install": "deno install -f --name datelta src/main.ts",
+    "uninstall": "deno uninstall datelta"
+  }
+}
