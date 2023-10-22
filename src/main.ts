@@ -1,8 +1,10 @@
 import { dateDiff } from "./lib.ts";
 import { parse } from "https://deno.land/std@0.202.0/flags/mod.ts";
 
-const version = "v0.0.2";
-const help = `Usage: datelta [OPTIONS]
+const version = "v0.0.3";
+const help = `Usage: datelta ${version}
+
+Datelta calculates the difference between 2 dates.
 
 Options:
           --start     Start date
