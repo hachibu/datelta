@@ -1,7 +1,7 @@
 import { dateDiff } from "./lib.ts";
 import { parse } from "https://deno.land/std@0.202.0/flags/mod.ts";
 
-const version = "v0.0.1";
+const version = "v0.0.2";
 const help = `Usage: datelta [OPTIONS]
 
 Options:
@@ -29,6 +29,7 @@ function main() {
     startDate = new Date(flags.start);
     endDate = new Date();
   }
+
   if (flags.start && flags.end) {
     startDate = new Date(flags.start);
     endDate = new Date(flags.end);
@@ -37,7 +38,8 @@ function main() {
   if (!startDate) {
     console.error("Error: Start date is required.");
   } else if (startDate && endDate) {
-    console.log(JSON.stringify(dateDiff(startDate, endDate)));
+    const diff = dateDiff(startDate, endDate);
+    console.log(JSON.stringify(diff));
   }
 }
 

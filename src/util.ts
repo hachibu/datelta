@@ -20,10 +20,10 @@ export function floorDivMod(
 }
 
 export function floorMod(n: number): [quotient: number, remainder: number] {
-  if (n === 0) {
+  const q = Math.floor(n);
+  if (q === 0) {
     return [0, 0];
   }
-  const q = Math.floor(n);
   const r = n % q;
   return [q, r];
 }
