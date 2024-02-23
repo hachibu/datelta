@@ -1,4 +1,4 @@
-import { toUTC, floorDivMod, floorMod } from "./util.ts";
+import { floorDivMod, floorMod, toUTC } from "./util.ts";
 
 export interface DateDiff {
   years: number;

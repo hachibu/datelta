@@ -1,6 +1,7 @@
 # Datelta (Date + Delta = Datelta)
 
-CLI tool to diff dates.
+CLI tool to diff dates with millisecond precision and support for multiple
+output formats (e.g. json, yaml).
 
 ## Quick Start
 
@@ -52,3 +53,4 @@ datelta --start "mar 2006" | jq
 | ------------------- | -------------------------------- |
 | deno task install   | Install datelta as an executable |
 | deno task uninstall | Uninstall datelta                |
+| deno task dev       | Start development mode           |

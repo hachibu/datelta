@@ -6,13 +6,13 @@ export function toUTC(date: Date): number {
     date.getHours(),
     date.getMinutes(),
     date.getSeconds(),
-    date.getMilliseconds()
+    date.getMilliseconds(),
   );
 }
 
 export function floorDivMod(
   n: number,
-  m: number
+  m: number,
 ): [quotient: number, remainder: number] {
   const q = Math.floor(n / m);
   const r = n % m;
