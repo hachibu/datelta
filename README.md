@@ -7,14 +7,14 @@ output formats (e.g. json, yaml).
 
 - Install [Deno](https://docs.deno.com/runtime/manual/#install-deno)
 - Run `deno task install`
-- Run `datelta --start "Jan 1, 1990" | jq`
+- Run `datelta -b "Jan 1, 1990" | jq`
 
 ## Usage
 
 Time between start date and end date.
 
 ```
-datelta --start "jan 10, 1990 12:30:01" --end "feb 2002" | jq
+datelta -b "jan 10, 1990 12:30:01" -e "feb 2002" | jq
 ```
 
 ```json
@@ -32,7 +32,7 @@ datelta --start "jan 10, 1990 12:30:01" --end "feb 2002" | jq
 Time since start date.
 
 ```
-datelta --start "mar 2006" | jq
+datelta -b "mar 2006" | jq
 ```
 
 ```json

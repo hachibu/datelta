@@ -8,33 +8,39 @@ const help = `datelta ${version}
 Datelta calculates the difference between 2 dates with millisecond precision.
 
 Options:
-          --start     Start date (default: now).
-          --end       End date (default: now).
-          --fmt       Output format (default: json, options: json, yaml).
+      -b, --beg       Beginning date (default: now).
+      -e, --end       Ending date (default: now).
+      -f, --fmt       Output format (default: json, options: json, yaml).
       -h, --help      Print help.
       -V, --version   Print version.`;
 
 function main() {
+  const allowedFmts = ["json", "yaml"];
   const flags = parseArgs(Deno.args, {
     boolean: ["help", "h", "version", "V"],
-    string: ["start", "end", "fmt"],
+    string: ["beg", "b", "end", "e", "fmt", "f"],
   });
-  const allowedFmts = ["json", "yaml"];
 
-  if (flags.help || flags.h) {
+  flags.help ??= flags.h;
+  flags.version ??= flags.V;
+  flags.beg ??= flags.b;
+  flags.end ??= flags.e;
+  flags.fmt ??= flags.f;
+
+  if (flags.help) {
     return console.log(help);
-  } else if (flags.version || flags.V) {
+  } else if (flags.version) {
     return console.log(version);
   }
 
-  let startDate = new Date();
+  let begDate = new Date();
   let endDate = new Date();
 
-  if (flags.start && flags.end) {
-    startDate = new Date(flags.start);
+  if (flags.beg && flags.end) {
+    begDate = new Date(flags.beg);
     endDate = new Date(flags.end);
-  } else if (flags.start) {
-    startDate = new Date(flags.start);
+  } else if (flags.beg) {
+    begDate = new Date(flags.beg);
   } else {
     return console.log(help);
   }
@@ -43,11 +49,11 @@ function main() {
   if (!allowedFmts.includes(fmt)) {
     return console.error(
       `invalid argument: fmt was "${fmt}" expected one of:`,
-      allowedFmts,
+      allowedFmts
     );
   }
 
-  const dd = { ...dateDiff(startDate, endDate) };
+  const dd = { ...dateDiff(begDate, endDate) };
 
   if (fmt === "json") {
     console.log(JSON.stringify(dd));
@@ -56,7 +62,7 @@ function main() {
   } else {
     return console.error(
       `invalid argument: fmt was "${fmt}" expected one of:`,
-      allowedFmts,
+      allowedFmts
     );
   }
 }
